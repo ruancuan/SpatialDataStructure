@@ -40,3 +40,4 @@ Dynamic BVH是BVH的动态版本，可以处理物体的动态移动。在每次
 
 #### AABB Tree
 AABB Tree是一种基于轴对齐包围盒（AABB）的动态空间数据结构，可以处理物体的动态移动。在每次物体移动后，只需要更新其所在的节点和其父节点的包围盒即可，无需重构整个树。AABB Tree的优点是构造速度快，内存占用小，适用于处理大量物体的场景
+![Image text](/Show/BVH_AABB/git1.gif)

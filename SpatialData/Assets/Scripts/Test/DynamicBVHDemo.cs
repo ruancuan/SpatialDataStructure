@@ -6,13 +6,23 @@ using KS.DynamicBVH;
 public class DynamicBVHDemo : MonoBehaviour
 {
     private DynamicBVH bvh;
-    [SerializeField]
     private List<GameObject> objects = new List<GameObject>();
+    public int createNum = 10000;
+    public CubeCtrl ctrl;
 
     // Start is called before the first frame update
     void Start()
     {
         bvh = new DynamicBVH();
+        for (int i = 0; i < createNum; i++) {
+            AddObjToTree();
+        }
+        if (ctrl)
+        {
+            ctrl.tree = this.bvh;
+            this.AddGameObject(ctrl.gameObject);
+        }
+
     }
 
     public int haveCreateNum = 0;
@@ -29,12 +39,19 @@ public class DynamicBVHDemo : MonoBehaviour
         bvh.AddObject(obj);
     }
 
+    public void AddGameObject(GameObject go) {
+        if (go!=null) {
+            objects.Add(go);
+            bvh.AddObject(go);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            MoveObjects();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space)) {
+        //    MoveObjects();
+        //}
     }
 
     private void MoveObjects() {
